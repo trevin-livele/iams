@@ -176,6 +176,7 @@ if(isset($_POST["btn_search"])){
                   <tbody>
 
                     <?php
+                  
                     $mysql_query_command_1 = $mysql_query_1;
                     $execute_result_query = mysqli_query($conn,$mysql_query_command_1);
                     while ($row_set = mysqli_fetch_array($execute_result_query)){

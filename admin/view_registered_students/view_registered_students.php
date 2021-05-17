@@ -3,74 +3,7 @@
 
 include '../../database_connection/database_connection.php';
 
-$mysql_query_1 = "SELECT * FROM vira_registration";
-$mysql_query_2 = "SELECT * FROM industrial_registration";
 
-if(isset($_POST["btn_search"])){
-
-  $search_by = $_POST["filter-by"];
-  $search_term = $_POST["txt_search_term"];
-
-  if($search_by!=""&& $search_term!=""){
-
-    switch ($search_by) {
-      case 'Filter By':
-        $mysql_query_1 = "SELECT * FROM vira_registration";
-        $mysql_query_2 = "SELECT * FROM industrial_registration";
-
-        break;
-
-      case 'First Name':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE first_name LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE first_name LIKE '%$search_term%'";
-
-      break;
-
-      case 'Last Name':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE last_name LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE last_name LIKE '%$search_term%'";
-
-      break;
-
-      case 'Index Number':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE index_number LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE index_number LIKE '%$search_term%'";
-
-        break;
-
-      case 'Programme':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE programme LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE programme LIKE '%$search_term%'";
-
-        break;
-
-      case 'Level':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE level LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE level LIKE '%$search_term%'";
-
-        break;
-
-      case 'Session':
-
-      $mysql_query_1 = "SELECT * FROM vira_registration WHERE session LIKE '%$search_term%'";
-      $mysql_query_2 = "SELECT * FROM industrial_registration WHERE session LIKE '%$search_term%'";
-
-        break;
-
-      default:
-
-      $mysql_query_1 = "SELECT * FROM vira_registration";
-      $mysql_query_2 = "SELECT * FROM industrial_registration";
-
-        break;
-    }
-  }
-}
 
  ?>
 
@@ -129,10 +62,10 @@ if(isset($_POST["btn_search"])){
                                     <option>FilterBy</option>
                                     <option>First Name</option>
                                     <option>Last Name</option>
-                                    <option>Index Number</option>
-                                    <option>Programme</option>
+                                    <option>Regestration Number</option>
+                                    <!-- <option>Programme</option>
                                     <option>Level</option>
-                                    <option>Session</option>
+                                    <option>Session</option> -->
 
                                   </select>
 
@@ -153,11 +86,11 @@ if(isset($_POST["btn_search"])){
                   <thead>
                     <tr>
                         <th style="text-align:center">Student Name</th>
-                        <th style="text-align:center">Index Number</th>
+                        <th style="text-align:center">Reg Number</th>
                         <th style="text-align:center">Programme</th>
-                        <th style="text-align:center">Level</th>
-                        <th style="text-align:center">Session</th>
-                        <th style="text-align:center">Registration Type </th>
+                        <!-- <th style="text-align:center">Level</th>
+                        <th style="text-align:center">Session</th> -->
+                        <!-- <th style="text-align:center">Registration Type </th> -->
 
                     </tr>
 
@@ -165,7 +98,9 @@ if(isset($_POST["btn_search"])){
 
                   <tbody>
                     <?php
-                    $mysql_query_command_1 = $mysql_query_1;
+                    $query = "SELECT * FROM registered_students ";
+
+                    $mysql_query_command_1 = $query;
                     $execute_result_query = mysqli_query($conn,$mysql_query_command_1);
                     while ($row_set = mysqli_fetch_array($execute_result_query)){
 
@@ -173,31 +108,16 @@ if(isset($_POST["btn_search"])){
 
                       echo "<td>".$row_set["first_name"]."&nbsp;".$row_set["last_name"]."</td>";
                       echo "<td>".$row_set["index_number"]."</td>";
-                      echo "<td>".$row_set["programme"]."</td>";
-                      echo "<td>".$row_set["level"]."</td>";
-                      echo "<td>".$row_set["session"]."</td>";
-                      echo "<td>"."Vira Registration"."</td>";
+                      // echo "<td>".$row_set["programme"]."</td>";
+                      // echo "<td>".$row_set["level"]."</td>";
+                      // echo "<td>".$row_set["session"]."</td>";
+                      // echo "<td>"."Vira Registration"."</td>";
 
                       echo "</tr>";
 
                     }
 
-                    $mysql_query_command_2 = $mysql_query_2;
-                    $execute_result_query_2 = mysqli_query($conn,$mysql_query_command_2);
-                    while($row_set_2 = mysqli_fetch_array($execute_result_query_2)){
-
-                      echo "<tr style='text-align:center;font-size:1.1em'>";
-
-                      echo "<td>".$row_set_2["first_name"]."&nbsp;".$row_set_2["last_name"]."</td>";
-                      echo "<td>".$row_set_2["index_number"]."</td>";
-                      echo "<td>".$row_set_2["programme"]."</td>";
-                      echo "<td>".$row_set_2["level"]."</td>";
-                      echo "<td>".$row_set_2["session"]."</td>";
-                      echo "<td>"."Industrial Registration"."</td>";
-
-                      echo "</tr>";
-
-                    }
+                   
                      ?>
                   </tbody>
             </table>

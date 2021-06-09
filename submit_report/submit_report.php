@@ -58,7 +58,7 @@
 					<h1 style="text-align: center">Upload Report</h1>
 					<input type="file" name="file[]" multiple required>
 					<input type="submit" value="Upload" id="sub-but">
-					<h4 style="text-align: center"><strong style="color: #E13F41">Please Ensure That your report is in a Microsoft Word format with your index number as its name before uploading it</strong></h4>
+					<h4 style="text-align: center"><strong style="color: #E13F41">Please Ensure That your report is in a Microsoft Word format with your regestration number as its name before uploading it</strong></h4>
 					<h4 style="text-align: center">Any work not in Microsoft Word format would be discarded </h4>
 					
 					<progress id="prog" max="100" value="0" style="display: none"></progress>

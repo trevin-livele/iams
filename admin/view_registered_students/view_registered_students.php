@@ -63,10 +63,6 @@ include '../../database_connection/database_connection.php';
                                     <option>First Name</option>
                                     <option>Last Name</option>
                                     <option>Regestration Number</option>
-                                    <!-- <option>Programme</option>
-                                    <option>Level</option>
-                                    <option>Session</option> -->
-
                                   </select>
 
                               </div>
@@ -87,11 +83,7 @@ include '../../database_connection/database_connection.php';
                     <tr>
                         <th style="text-align:center">Student Name</th>
                         <th style="text-align:center">Reg Number</th>
-                        <th style="text-align:center">Programme</th>
-                        <!-- <th style="text-align:center">Level</th>
-                        <th style="text-align:center">Session</th> -->
-                        <!-- <th style="text-align:center">Registration Type </th> -->
-
+                        <th style="text-align:center">Phone Number</th>
                     </tr>
 
                   </thead>
@@ -108,10 +100,8 @@ include '../../database_connection/database_connection.php';
 
                       echo "<td>".$row_set["first_name"]."&nbsp;".$row_set["last_name"]."</td>";
                       echo "<td>".$row_set["index_number"]."</td>";
-                      // echo "<td>".$row_set["programme"]."</td>";
-                      // echo "<td>".$row_set["level"]."</td>";
-                      // echo "<td>".$row_set["session"]."</td>";
-                      // echo "<td>"."Vira Registration"."</td>";
+                      echo "<td>".$row_set["phone_number"]."</td>";
+                      
 
                       echo "</tr>";
 

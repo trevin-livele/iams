@@ -161,12 +161,6 @@ if(isset($_POST["btn_search"])){
 
                         <th style="text-align:center">Student Name</th>
                         <th style="text-align:center">Index Number</th>
-                        <th style="text-align:center">Programme</th>
-                        <th style="text-align:center">Level</th>
-                        <th style="text-align:center">Session</th>
-                        <th style="text-align:center">Registration Type </th>
-                        <th style="text-align: center">Company Supervisor Name</th>
-                        <th style="text-align: center">Company Supervisor Contact</th>
                         <th style="text-align: center">Score</th>
 
                     </tr>
@@ -175,43 +169,16 @@ if(isset($_POST["btn_search"])){
 
                   <tbody>
 
-                    <?php
-                    $mysql_query_command_1 = $mysql_query_1;
-                    $execute_result_query = mysqli_query($conn,$mysql_query_command_1);
-                    while ($row_set = mysqli_fetch_array($execute_result_query)){
+                  <?php
+                  $query = $conn->query("SELECT * FROM company_supervisor_grade");
+                
+                    while($row_set_2 = $query->fetch_assoc()){
 
                       echo "<tr style='text-align:center;font-size:1.1em'>";
 
-                      echo "<td>".$row_set["first_name"]."&nbsp;".$row_set["last_name"]."</td>";
-                      echo "<td>".$row_set["index_number"]."</td>";
-                      echo "<td>".$row_set["programme"]."</td>";
-                      echo "<td>".$row_set["level"]."</td>";
-                      echo "<td>".$row_set["session"]."</td>";
-                      echo "<td>"."Vira Registration"."</td>";
-					  echo "<td>".$row_set["company_supervisor_name"]."</td>";
-                      echo "<td>".$row_set["company_supervisor_contact"]."</td>";
-					  echo "<td>".$row_set["company_supervisor_grade"]."</td>";
-						
-
-                      echo "</tr>";
-
-                    }
-
-                    $mysql_query_command_2 = $mysql_query_2;
-                    $execute_result_query_2 = mysqli_query($conn,$mysql_query_command_2);
-                    while($row_set_2 = mysqli_fetch_array($execute_result_query_2)){
-
-                      echo "<tr style='text-align:center;font-size:1.1em'>";
-
-                      echo "<td>".$row_set_2["first_name"]."&nbsp;".$row_set_2["last_name"]."</td>";
-                      echo "<td>".$row_set_2["index_number"]."</td>";
-                      echo "<td>".$row_set_2["programme"]."</td>";
-                      echo "<td>".$row_set_2["level"]."</td>";
-                      echo "<td>".$row_set_2["session"]."</td>";
-                      echo "<td>"."Industrial Registration"."</td>";
-                      echo "<td>".$row_set_2["company_supervisor_name"]."</td>";
-                      echo "<td>".$row_set_2["company_supervisor_contact"]."</td>";
-					  echo "<td>".$row_set_2["company_supervisor_grade"]."</td>";
+                      echo "<td>".$row_set_2["username"]."&nbsp;"."</td>";
+                      echo "<td>".$row_set_2["user_index"]."</td>";
+					            echo "<td>".$row_set_2["grade"]."</td>";
                       echo "</tr>";
 
                     }

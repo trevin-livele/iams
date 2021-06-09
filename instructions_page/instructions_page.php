@@ -2,78 +2,81 @@
 
 include '../database_connection/database_connection.php';
 
-$student_fname = $_COOKIE["student_first_name"];
-$student_lname = $_COOKIE["student_last_name"];
-$student_index_number = $_COOKIE["student_index_number"];
+// $student_fname = $_COOKIE["student_first_name"];
+// $student_lname = $_COOKIE["student_last_name"];
+// $student_index_number = $_COOKIE["student_index_number"];
 
 
-$mysql_check_supervisor_assigned = "SELECT * FROM vira_registration WHERE index_number='$student_index_number' LIMIT 1";
+// $mysql_check_supervisor_assigned = "SELECT * FROM vira_registration WHERE index_number='$student_index_number' LIMIT 1";
 
-$execute_check_supervisor_assigned = mysqli_query($conn,$mysql_check_supervisor_assigned);
 
-$check_presence = mysqli_num_rows($execute_check_supervisor_assigned);
 
-if($check_presence == 1){
+// $execute_check_supervisor_assigned = mysqli_query($conn,$mysql_check_supervisor_assigned);
 
-$get_entire_results = mysqli_fetch_array($execute_check_supervisor_assigned);
 
-$student_faculty = $get_entire_results["faculty"];
-$student_company_region = $get_entire_results["attachment_region"];
-$student_visiting_supervisor_name = $get_entire_results["visiting_supervisor_name"];
+// $check_presence = mysqli_num_rows($execute_check_supervisor_assigned);
 
-if($student_company_region!="unassigned" && $student_visiting_supervisor_name!="unassigned"){
+// if($check_presence == 1){
 
-	$contains_data = "true";
+// $get_entire_results = mysqli_fetch_array($execute_check_supervisor_assigned);
 
-	$get_supervisors_contact_query = "SELECT * FROM visiting_lecturers WHERE lecturer_faculty='$student_faculty' AND lecturer_name='$student_visiting_supervisor_name' LIMIT 1";
+// $student_faculty = $get_entire_results["faculty"];
+// $student_company_region = $get_entire_results["attachment_region"];
+// $student_visiting_supervisor_name = $get_entire_results["visiting_supervisor_name"];
 
-	$execute_get_supervisor_contact = mysqli_query($conn,$get_supervisors_contact_query);
+// if($student_company_region!="unassigned" && $student_visiting_supervisor_name!="unassigned"){
 
-	$get_supervisors_contact = mysqli_fetch_array($execute_get_supervisor_contact);
+// 	$contains_data = "true";
 
-	$lecturers_contact = $get_supervisors_contact["lecturer_phone_number"];
+// 	$get_supervisors_contact_query = "SELECT * FROM visiting_lecturers WHERE lecturer_faculty='$student_faculty' AND lecturer_name='$student_visiting_supervisor_name' LIMIT 1";
 
-	$assign_contact_to_student = "UPDATE `vira_registration` SET `visiting_supervisor_contact` = '$lecturers_contact' WHERE `index_number` = '$student_index_number'";
+// 	$execute_get_supervisor_contact = mysqli_query($conn,$get_supervisors_contact_query);
 
-	$execute_assign_contact = mysqli_query($conn,$assign_contact_to_student);
+// 	$get_supervisors_contact = mysqli_fetch_array($execute_get_supervisor_contact);
 
-}else{
-	$contains_data = "false";
-}
+// 	$lecturers_contact = $get_supervisors_contact["lecturer_phone_number"];
 
-}else{
+// 	$assign_contact_to_student = "UPDATE `vira_registration` SET `visiting_supervisor_contact` = '$lecturers_contact' WHERE `index_number` = '$student_index_number'";
 
-	$mysql_check_supervisor_assigned = "SELECT * FROM industrial_registration WHERE index_number='$student_index_number' LIMIT 1";
+// 	$execute_assign_contact = mysqli_query($conn,$assign_contact_to_student);
 
-	$execute_check_supervisor_assigned = mysqli_query($conn,$mysql_check_supervisor_assigned);
+// }else{
+// 	$contains_data = "false";
+// }
 
-	$get_entire_results = mysqli_fetch_array($execute_check_supervisor_assigned);
+// }else{
 
-	$student_faculty = $get_entire_results["faculty"];
-	$student_company_region = $get_entire_results["attachment_region"];
-	$student_visiting_supervisor_name = $get_entire_results["visiting_supervisor_name"];
+// 	$mysql_check_supervisor_assigned = "SELECT * FROM industrial_registration WHERE index_number='$student_index_number' LIMIT 1";
 
-	if($student_company_region!="unassigned" && $student_visiting_supervisor_name!="unassigned"){
+// 	$execute_check_supervisor_assigned = mysqli_query($conn,$mysql_check_supervisor_assigned);
 
-	$contains_data = "true";
+// 	$get_entire_results = mysqli_fetch_array($execute_check_supervisor_assigned);
 
-	$get_supervisors_contact_query = "SELECT * FROM visiting_lecturers WHERE lecturer_faculty='$student_faculty' AND lecturer_name='$student_visiting_supervisor_name' LIMIT 1";
+// 	$student_faculty = $get_entire_results["faculty"];
+// 	$student_company_region = $get_entire_results["attachment_region"];
+// 	$student_visiting_supervisor_name = $get_entire_results["visiting_supervisor_name"];
 
-	$execute_get_supervisor_contact = mysqli_query($conn,$get_supervisors_contact_query);
+// 	if($student_company_region!="unassigned" && $student_visiting_supervisor_name!="unassigned"){
 
-	$get_supervisors_contact = mysqli_fetch_array($execute_get_supervisor_contact);
+// 	$contains_data = "true";
 
-	$lecturers_contact = $get_supervisors_contact["lecturer_phone_number"];
+// 	$get_supervisors_contact_query = "SELECT * FROM visiting_lecturers WHERE lecturer_faculty='$student_faculty' AND lecturer_name='$student_visiting_supervisor_name' LIMIT 1";
 
-	$assign_contact_to_student = "UPDATE `industrial_registration` SET `visiting_supervisor_contact` = '$lecturers_contact' WHERE `index_number` = '$student_index_number'";
+// 	$execute_get_supervisor_contact = mysqli_query($conn,$get_supervisors_contact_query);
 
-	$execute_assign_contact = mysqli_query($conn,$assign_contact_to_student);
+// 	$get_supervisors_contact = mysqli_fetch_array($execute_get_supervisor_contact);
 
-}else{
-		$contains_data = "false";
-	}
+// 	$lecturers_contact = $get_supervisors_contact["lecturer_phone_number"];
 
-}
+// 	$assign_contact_to_student = "UPDATE `industrial_registration` SET `visiting_supervisor_contact` = '$lecturers_contact' WHERE `index_number` = '$student_index_number'";
+
+// 	$execute_assign_contact = mysqli_query($conn,$assign_contact_to_student);
+
+// }else{
+// 		$contains_data = "false";
+// 	}
+
+// }
 
 
  ?>
@@ -100,13 +103,14 @@ if($student_company_region!="unassigned" && $student_visiting_supervisor_name!="
 <div id="top-navigation">
 <div id="header_logo"><img src="img/header_log.jpg" class="img-responsive" alt="logo" style="float:left;width:150px; height:50px;position:relative;left:20px"/></div>
 
-<div id="student_name_adjusted"><span style="color:rgb(255, 198, 0);font-size:1.1em"><em>Welcome,</em>&nbsp; </span><span style="font-family:serif"><?php echo $student_fname." ".$student_lname;?></span></div>
-</div>
+<!-- <div id="student_name_adjusted"><span style="color:rgb(255, 198, 0);font-size:1.1em"><em>Welcome,</em>&nbsp; </span><span style="font-family:serif"><?php echo $student_fname." ".$student_lname;?></span></div>
+</div> -->
 
 <div id="left_side_bar">
 <ul id="menu_list">
   <a class="menu_items_link" href="instructions_page.php"><li class="menu_items_list" style="background-color:green;padding-left:16px">Instructions</li></a>
   <a class="menu_items_link" href="download_letter.php"><li class="menu_items_list" style="background-color:green;padding-left:16px">DOWNLOADS</li></a>
+  <a class="menu_items_link" href="return_form.php"><li class="menu_items_list" style="background-color:green;padding-left:16px">Return form</li></a>
   <a class="menu_items_link" href="../e-logbook/elogbook.php"><li class="menu_items_list">E-Logbook</li></a>
   <a class="menu_items_link" href="../company_supervisor/company_supervisor_login.php"><li class="menu_items_list">Company Supervisor</li></a>
   <a class="menu_items_link" href="../visiting_supervisor/visiting_supervisor_login.php"><li class="menu_items_list">Visiting Supervisor</li></a>

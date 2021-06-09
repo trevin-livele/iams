@@ -60,16 +60,16 @@ if(isset($_POST["btn_submit"])){
 		if($check_existence==1){
 			$mysql_query3 = "UPDATE `industrial_registration` SET `company_supervisor_grade` = '$grade_score' WHERE index_number = '$student_index_number'";
 			$execute_mysql_query3 = mysqli_query($conn,$mysql_query3);
-		}else{
+		// }else{
 
-		$mysql_query4 = "SELECT * FROM vira_registration WHERE index_number='$student_index_number'";
-		$execute_mysql_query4 = mysqli_query($conn,$mysql_query4);
-		$check_existence2 = mysqli_num_rows($execute_mysql_query4);
+		// $mysql_query4 = "SELECT * FROM vira_registration WHERE index_number='$student_index_number'";
+		// $execute_mysql_query4 = mysqli_query($conn,$mysql_query4);
+		// $check_existence2 = mysqli_num_rows($execute_mysql_query4);
 
-		if($check_existence2==1){
-			$mysql_query5 = "UPDATE `vira_registration` SET `company_supervisor_grade` = '$grade_score' WHERE index_number = '$student_index_number'";
-			$execute_mysql_query5 = mysqli_query($conn,$mysql_query5);
-		}
+		// if($check_existence2==1){
+		// 	$mysql_query5 = "UPDATE `vira_registration` SET `company_supervisor_grade` = '$grade_score' WHERE index_number = '$student_index_number'";
+		// 	$execute_mysql_query5 = mysqli_query($conn,$mysql_query5);
+		// }
 
 		}
 	}

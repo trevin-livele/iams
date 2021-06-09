@@ -133,9 +133,6 @@ if(isset($_POST["btn_search"])){
                                     <option>First Name</option>
                                     <option>Last Name</option>
                                     <option>Reg Number</option>
-                                    <option>Programme</option>
-                                    <!-- <option>Level</option>
-                                    <option>Session</option> -->
                                     <option>Region</option>
                                     <option>Company</option>
 
@@ -161,8 +158,6 @@ if(isset($_POST["btn_search"])){
                         <th style="text-align:center">Student Name</th>
                         <th style="text-align:center">Reg Number</th>
                         <th style="text-align:center">Programme</th>
-                        <!-- <th style="text-align:center">Level</th>
-                        <th style="text-align:center">Session</th> -->
                         <th style="text-align:center">Supervisor Name</th>
                         <th style="text-align:center">Supervisor Contact</th>
                         <th style="text-align:center" width="5%">Supervisor E-mail</th>
@@ -185,8 +180,6 @@ if(isset($_POST["btn_search"])){
                       echo "<td>".$row_set["first_name"]."&nbsp;".$row_set["last_name"]."</td>";
                       echo "<td>".$row_set["index_number"]."</td>";
                       echo "<td>".$row_set["programme"]."</td>";
-                      // echo "<td>".$row_set["level"]."</td>";
-                      // echo "<td>".$row_set["session"]."</td>";
                       echo "<td>".$row_set["supervisor_name"]."</td>";
                       echo "<td>".$row_set["supervisor_contact"]."</td>";
                       echo "<td>".$row_set["supervisor_email"]."</td>";

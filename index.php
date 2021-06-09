@@ -129,8 +129,12 @@ if(isset($_POST["btn_signup"])){
           <input id="lastname" type="text" class="input" name="txt_signup_lastname">
         </div>
         <div class="group">
-          <label for="index_number" class="label">Index Number</label>
+          <label for="index_number" class="label">Reg Number</label>
           <input id="index_number" type="text" class="input" name="txt_signup_indexnumber">
+        </div>
+        <div class="group">
+          <label for="phone_number" class="label">Phone Number</label>
+          <input id="phone_number" type="text" class="input" name="txt_signup_phonenumber">
         </div>
 				<div class="group">
 					<label for="pass" class="label">Password</label>
